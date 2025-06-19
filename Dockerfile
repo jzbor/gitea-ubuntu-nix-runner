@@ -12,3 +12,9 @@ RUN nix flake archive nixpkgs
 
 # RUN echo $SHELL
 RUN echo '. $HOME/.nix-profile/etc/profile.d/nix.sh' >> ~/.bashrc
+
+ENV PATH="$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$PATH"
+
+SHELL [ "/bin/bash", "--login", "-e", "-o", "pipefail", "-c" ]
+WORKDIR /tmp
+
