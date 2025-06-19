@@ -10,4 +10,5 @@ RUN nix registry add nixpkgs github:NixOS/nixpkgs/nixpkgs-unstable
 RUN nix registry pin github:NixOS/nixpkgs/nixpkgs-unstable
 RUN nix flake archive nixpkgs
 
-RUN echo $SHELL
+# RUN echo $SHELL
+RUN echo '. $HOME/.nix-profile/etc/profile.d/nix.sh' >> ~/.bashrc
