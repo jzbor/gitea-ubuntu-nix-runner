@@ -92,7 +92,7 @@ jobs:
     steps:
       - uses: actions/delete-package-versions@v5
         with:
-          package-name: ${{ env.IMAGE_NAME }}
+          package-name: gitea-ubuntu-nix-runner
           package-type: 'container'
           min-versions-to-keep: 0
           delete-only-untagged-versions: 'true'
