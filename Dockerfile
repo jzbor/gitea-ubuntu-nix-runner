@@ -19,8 +19,8 @@ ENV PATH="/root/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$PATH"
 RUN nix registry add nixpkgs github:NixOS/nixpkgs/nixpkgs-unstable
 RUN nix registry pin github:NixOS/nixpkgs/nixpkgs-unstable
 
-# Install attic for caching and NodeJS for actions
-RUN nix profile install "nixpkgs#attic-client" "nixpkgs#nodejs_20"
+# Install attic for caching
+RUN nix profile install "nixpkgs#attic-client"
 
 # Run GC once to remove installation dependencies
 RUN nix store gc
