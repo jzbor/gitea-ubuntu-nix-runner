@@ -1,5 +1,5 @@
 # FROM catthehacker/ubuntu:act-latest
-ARG BASE_IMG
+ARG BASE_IMG=catthehacker/ubuntu:act-latest
 FROM ${BASE_IMG}
 
 RUN apt-get update -y
@@ -12,7 +12,7 @@ RUN curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install | sh -s -- 
 RUN echo "filter-syscalls = false" >> /etc/nix/nix.conf
 RUN echo "experimental-features = nix-command flakes" >> /etc/nix/nix.conf
 
-ENV PATH="$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$PATH"
+ENV PATH="/root/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$PATH"
 
 
 # Pin nixpkgs version
@@ -20,7 +20,7 @@ RUN nix registry add nixpkgs github:NixOS/nixpkgs/nixpkgs-unstable
 RUN nix registry pin github:NixOS/nixpkgs/nixpkgs-unstable
 
 # Install attic for caching and NodeJS for actions
-#RUN nix profile install "nixpkgs#attic-client" "nixpkgs#node_20"
+RUN nix profile install "nixpkgs#attic-client" "nixpkgs#nodejs_20"
 
 # Run GC once to remove installation dependencies
 RUN nix store gc
