@@ -75,7 +75,7 @@ jobs:
           push: true
           platforms: linux/${{ steps.determine.outputs.arch }}
           tags: ghcr.io/jzbor/gitea-ubuntu-nix-runner:${{ matrix.base }}-${{ steps.determine.outputs.arch }}
-          # labels: ${{ steps.meta.outputs.labels }}
+          labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
